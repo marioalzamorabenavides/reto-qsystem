@@ -1,0 +1,8 @@
+--CREATE DATABASE retodb
+--  WITH
+--  OWNER = malzamora
+--  ENCODING = 'UTF8'
+--  LC_COLLATE = 'es_ES.UTF-8'
+--  LC_CTYPE = 'es_ES.UTF-8'
+--  TABLESPACE = pg_default
+--  CONNECTION LIMIT = -1;

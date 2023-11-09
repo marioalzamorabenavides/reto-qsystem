@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  db-qsystem:
+    image: postgres:14
+    container_name: db-qsystem
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=retodb
+      - POSTGRES_USER=malzamorab
+      - POSTGRES_PASSWORD=password
+    networks:
+      - network-reto
+
+  # Servicio de la aplicación Spring Boot
+  app-reto:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db-qsystem:5432/retodb
+      SPRING_DATASOURCE_USERNAME: malzamorab
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - db-qsystem
+    networks:
+      - network-reto
+networks:
+  network-reto:
+    driver: bridge
